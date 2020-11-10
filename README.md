@@ -21,6 +21,19 @@ The first experiment is using hydrive to search for the best run metrics. The fi
 From the instructions given, I chose "Standard_DV_V2" virtual machine with a maximum of a 4 nodes.
 I then create a paremeter sampler and an early-stop policy. In the parameter sampler I specified the use of random sampling on the
 Inverse of regularization strength (C) and Maximum number of iterations to coverge(max_iter) as given in the train script(train.py).
+And for C I specified the choice distribution as (0.25, 0.5, 0.75, 1.0, 2) Regularization is use to prevent overfitting on the model,
+smaller values specify stronger regularization. The best performance of the model that had C values is 0.75
+The maximum number of iterations I specified a choice distribution in the set (100, 150, 200, 250, 300). This actions was taken for 
+the solvers to converg.Theoretically this parameter could be use to avoid waisting time in models that will not converge, no matter
+how long we let the solver run.
+
+With respect to early stopping policy I used the BanditPolicy with slack_factor of 0.1, evaluation interval of 2, and delay evaluation of 5.
+Bandit terminates runs where the primary metric is not within the specified slack factor/slack amount compared to the best performing run.
+This means that any training run with an accuracy 10% lower than the maximum reported at that interval is terminated without completing it.
+The delay evaluation parameter means to avoids premature termination of training runs by allowing all configurations to run for a minimum
+number of intervals.
+
+
 
 
 
