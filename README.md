@@ -17,6 +17,11 @@ Decision Support Systems, Elsevier, 62:22-31, June 2014.
 
 Scikit-Learn Pipeline
 
+The first experiment is using hydrive to search for the best run metrics. The first step is to create a compute instance to run it.
+From the instructions given, I chose "Standard_DV_V2" virtual machine with a maximum of a 4 nodes.
+I then create a paremeter sampler and an early-stop policy. In the parameter sampler I specified the use of random sampling on the
+Inverse of regularization strength (C) and Maximum number of iterations to coverge(max_iter) as given in the train script(train.py).
+
 
 
 
