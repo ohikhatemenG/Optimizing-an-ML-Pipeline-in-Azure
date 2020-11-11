@@ -43,12 +43,37 @@ After taken the above step, I submitted the experiment to be executed and call f
 notebook. Finally, when the results came out, i retrieved the best run parameters values and save it
 
 AutoML
+
 The first step I took was load the dataset from the internet and applied the clean data customize function derived from train22.py script to clean 
 the dataset. And split the dataset into train and test sets of 70% and 30% respectively with sklearn fuction. Then I constructed the configuration
 for the trainig runs using AutoMLConfig. In AutoMLConfig I included task type (classification), iterations timeout minutes of 30, primary metric
 (accuracy), cross validation of 5, compute target(y), training data (train data). Hyperdrive tuning was not needed in this AutoML.Finally, I 
 submitted the runs, after the results came out, I had the best model as VotingEnsemble with accuracy of 0.9155. Then I retrieved the best model 
-and save it.
+and save it. AutoML detected a problem of imbalance data and suggested that the run cancel the current run and fix balancing problem. Also no 
+feature missing value were detected in the traininig data. The inputs were analyzed, and no high cardinality feature were detected. The most influential
+feature in the AutoML is duration.
+
+Pipeline Comparison
+
+The two experiments I run gave quite similar accuracies, 91.03% for the logistic regression in the HyperDrive and 91.55% for the voting ensable in the AutoML. 
+However, once again these metrics might be misleading. If these results were correct, unless I am planning to deploy this models to classify a huge ammount
+of records, a 0.52% difference doesn´t seem relevant.
+
+AutoML runs saved relevant amount of its experiment when compared to the use of HyperDrive pipeline.
+AutoML established a number of pipelines in parallel that make use of different algorithms and parameters for me
+AutoML algorithms paired with feature selections, where each iteration produces a model with a training score. The higher the score, the better the model is 
+considered to "fit" your data. It will stop once it hits the exit criteria defined in the experiment.
+HyperDrive pipeline process or proceedure took a longer time when compared to AutoML Process.
+
+Future Work Future work
+
+(1) As mentioned above, the issue of imbalance data need to be addressed. And one way to resolve it, is the use the SMOTE or ADASYN sampling methods in the
+imbalanced-learn library.
+(2) Remove the duration feature in the dataset if the model is to be used for prediction. First, this feature is unknown at the time of prediction. Second,
+even if I knew it, it does not depend on anything the decision-makers can control, thus I don´t see the use of it (except for academic purposes). One might 
+say that age, for example, is not under the decision-makers control either; however, they can target their advertising campaign to specific age ranges, while
+they cannot force potential customers to stay longer on the phone.
+
 
 
 
