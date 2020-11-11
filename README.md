@@ -36,7 +36,19 @@ The next step is to create an estimator with the use of train22.py script, this 
 a custom function, also split the dataset into train and test sets of 70% and 30% respectively with a sklearn function. And It is responsibility
 of parsing of arguments selected by the sampler, defined the model to be trained and keep monitoring of the chosen metric.
 I then constructed the configurations for the training runs using HyperDriveConfig. In this HyperDriveConfig I included the estimator previously
-defined, add the sampling and early termination policy mentioned above, specified primary matric(accuracy) and its goal(maximum).
+defined, add the sampling and early termination policy mentioned above, specified primary matric(accuracy) and its goal(maximum). Also I added 
+maximum total runs of 25 and maximum concurrent number of runs as 4
+
+After taken the above step, I submitted the experiment to be executed and call for RunDetails(experiment).show() so as to monitor it within the
+notebook. Finally, when the results came out, i retrieved the best run parameters values and save it
+
+AutoML
+The first step I took was load the dataset from the internet and applied the clean data customize function derived from train22.py script to clean 
+the dataset. And split the dataset into train and test sets of 70% and 30% respectively with sklearn fuction. Then I constructed the configuration
+for the trainig runs using AutoMLConfig. In AutoMLConfig I included task type (classification), iterations timeout minutes of 30, primary metric
+(accuracy), cross validation of 5, compute target(y), training data (train data). Hyperdrive tuning was not needed in this AutoML.Finally, I 
+submitted the runs, after the results came out, I had the best model as VotingEnsemble with accuracy of 0.9155. Then I retrieved the best model 
+and save it.
 
 
 
