@@ -32,6 +32,12 @@ Bandit terminates runs where the primary metric is not within the specified slac
 This means that any training run with an accuracy 10% lower than the maximum reported at that interval is terminated without completing it.
 The delay evaluation parameter means to avoids premature termination of training runs by allowing all configurations to run for a minimum
 number of intervals.
+The next step is to create an estimator with the use of train22.py script, this script load data from the internet and I clean the data with
+a custom function, also split the dataset into train and test sets of 70% and 30% respectively with a sklearn function. And It is responsibility
+of parsing of arguments selected by the sampler, defined the model to be trained and keep monitoring of the chosen metric.
+I then constructed the configurations for the training runs using HyperDriveConfig. In this HyperDriveConfig I included the estimator previously
+defined, add the sampling and early termination policy mentioned above, specified primary matric(accuracy) and its goal(maximum).
+
 
 
 
