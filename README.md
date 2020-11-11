@@ -65,14 +65,15 @@ AutoML algorithms paired with feature selections, where each iteration produces 
 considered to "fit" your data. It will stop once it hits the exit criteria defined in the experiment.
 HyperDrive pipeline process or proceedure took a longer time when compared to AutoML Process.
 
-Future Work Future work
+ Future work
 
 (1) As mentioned above, the issue of imbalance data need to be addressed. And one way to resolve it, is the use the SMOTE or ADASYN sampling methods in the
 imbalanced-learn library.
 (2) Remove the duration feature in the dataset if the model is to be used for prediction. First, this feature is unknown at the time of prediction. Second,
-even if I knew it, it does not depend on anything the decision-makers can control, thus I don´t see the use of it (except for academic purposes). One might 
+even if I knew it, it does not depend on anything the decision-makers can control, thus I don´t see the use of it (except for academic exerises). One might 
 say that age, for example, is not under the decision-makers control either; however, they can target their advertising campaign to specific age ranges, while
 they cannot force potential customers to stay longer on the phone.
+
 
 
 
