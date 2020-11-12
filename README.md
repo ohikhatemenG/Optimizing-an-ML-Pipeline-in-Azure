@@ -31,7 +31,9 @@ With respect to early stopping policy I used the BanditPolicy with slack_factor 
 Bandit terminates runs where the primary metric is not within the specified slack factor/slack amount compared to the best performing run.
 This means that any training run with an accuracy 10% lower than the maximum reported at that interval is terminated without completing it.
 The delay evaluation parameter means to avoids premature termination of training runs by allowing all configurations to run for a minimum
-number of intervals.
+number of intervals.The reasons why I chosen random sampler is because of it support for discrete and continous hyperparameters, and is support
+early termination of low performance runs when compared to grid sampler that only support discrete hyperparameters. Also it is cheaper than grid
+sampler and Bayesian sampler.
 The next step is to create an estimator with the use of train22.py script, this script load data from the internet and I clean the data with
 a custom function, also split the dataset into train and test sets of 70% and 30% respectively with a sklearn function. And It is responsibility
 of parsing of arguments selected by the sampler, defined the model to be trained and keep monitoring of the chosen metric.
