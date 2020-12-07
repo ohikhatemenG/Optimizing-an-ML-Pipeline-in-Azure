@@ -1,11 +1,11 @@
- Optimizing an ML Pipeline in Azure
+ # Optimizing an ML Pipeline in Azure
  
-Overview
+# Overview
 
 This project is part of the Udacity Azure ML Nanodegree. In this project, we build and optimize an Azure ML pipeline using the Python SDK 
 and a provided Scikit-learn model. This model is then compared to an Azure AutoML run.
 
-Summary
+# Summary
 
 In this Project we engaged the use of UCI Bank Marketing Dataset, which is related with direct marketing campaigns of Portuguese banking 
 institution.The method of marketing campaigns were conducted on phone calls.The outputs of the bank is for client to access bank term deposit.
@@ -15,7 +15,7 @@ achieving an accuracy of 0.9155.
 The dataset is source from paper: S. Moro, P. Cortez and P. Rita. A Data-Driven Approach to Predict the Success of Bank Telemarketing. 
 Decision Support Systems, Elsevier, 62:22-31, June 2014.
 
-Scikit-Learn Pipeline
+# Scikit-Learn Pipeline
 
 The first experiment is using hydrive to search for the best run metrics. The first step I took was to create a compute instance to run it.
 From the instructions given, I specified "Standard_DV_V2" virtual machine with a maximum of 4 nodes.
@@ -46,7 +46,7 @@ maximum total runs of 25 and maximum concurrent number of runs as 4
 After taking the above step, I submitted the experiment to be executed and called for RunDetails(experiment).show() so as to monitor it within the
 notebook. Finally, when the results came out, i retrieved the best run parameters values and save it
 
-AutoML
+# AutoML
 
 The first step I took was to load the dataset from the internet and applied the clean data customize function derived from train22.py script to clean 
 the dataset. And split the dataset into train and test sets of 70% and 30% respectively with sklearn function. Then I constructed the configuration
@@ -57,7 +57,7 @@ and saved it. AutoML detected a problem of imbalance data and suggested that the
 feature missing value was detected in the training data. The inputs were analyzed, and no high cardinality features were detected. The most influential
 feature in the AutoML is duration.
 
-Pipeline Comparison
+# Pipeline Comparison
 
 The two experiments I ran gave quite similar accuracies, 91.03% for the logistic regression in the HyperDrive and 91.55% for the voting ensemble in the AutoML. 
 However, once again these metrics might be misleading. If these results were correct, unless I am planning to deploy this models to classify a huge amount
@@ -69,7 +69,7 @@ AutoML algorithms paired with feature selections, where each iteration produces 
 considered to "fit" your data. It will stop once it hits the exit criteria defined in the experiment.
 HyperDrive pipeline process or procedure took a longer time when compared to AutoML Process.
 
-Future work
+# Future work
 
 (1) As mentioned above, the issue of imbalance data needs to be addressed. And one way to resolve it, is to use the SMOTE or ADASYN sampling methods in the
 imbalanced-learn library.
